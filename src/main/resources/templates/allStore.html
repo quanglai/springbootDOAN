@@ -1,0 +1,89 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+
+    <!--<link th:href="@{webjars/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" id="bootstrap-css"/>-->
+    <!--<script th:src="@{webjars/jquery/1.9.1/jquery.min.js}"></script>-->
+    <!--<script th:src="@{webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>-->
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"/>
+</head>
+<style>
+    #title{
+        background-color: #2ecc71;
+        width: 100%;
+        height: 50px;
+    }
+    #thanhngan{
+        width: 100%;
+        height: 1px;
+        background-color: darkslategrey;
+        margin-top: 40px;
+    }
+    #store{
+        width: 600px;
+        height: 60px;
+        margin-top: 20px;
+        margin-left: 20px;
+    }
+</style>
+<body>
+<div class="row">
+    <div class="col-md-12" id="title">
+        <div style="margin-top: 3px;margin-left: 45%">
+            <input onclick="location.href='/createCuaHang'" id="ok" type="submit" value="CREATE ACCOUNT" class="btn btn-success btn-sm" />
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12" id="thanhngan">
+
+    </div>
+</div>
+<center>
+<div class="container">
+    <div>
+        <h2>DANH SACH CAC CUA HANG</h2>
+    </div>
+    <div class="row" >
+        <div class="col-md-7" style="background-color:darkslategrey;height: 2px;margin-left: 270px" >
+
+        </div>
+    </div>
+    <div class="container">
+        <div id="cuahang"></div>
+    </div>
+
+</div>
+</center>
+<script th:src="@{/webjars/jquery/1.9.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            contentType: "application/json",
+            url:'/cuahang',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            cache: false,
+            success: function (data) {
+                var  temp="";
+
+                for ( var i in data ) {
+                    var result = '<button  id="store" class="btn btn-primary" type="button" >'+ data[i].tenCuaHang+'</button>'
+
+                    temp = temp + result;
+                }
+                $("#cuahang").html(temp);
+                console.log(data)
+            }
+        })
+    });
+
+</script>
+</body>
+</html>

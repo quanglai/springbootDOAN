@@ -1,0 +1,68 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+
+    <!--<link th:href="@{webjars/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" id="bootstrap-css"/>-->
+    <!--<script th:src="@{webjars/jquery/1.9.1/jquery.min.js}"></script>-->
+    <!--<script th:src="@{webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>-->
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"/>
+</head>
+<style>
+    #PreviewPicture {
+        width: 500px;
+        height: 450px;
+        background-size: cover;
+        -webkit-box-shadow: 0 0 1px 1px rgba(0, 0, 0, .3);
+        display: inline-block;
+    }
+</style>
+<body>
+
+    <div  style="height: 50px;background-color: #2ecc71;width: 100%">
+
+    </div>
+
+<center>
+
+    <h1> create store</h1>
+    <div>
+
+
+        <div  id="PreviewPicture" ></div>
+        <div>
+            <input id="FileUpload" style="width: 500px;margin-top: 10px"  type="file" value="TIEP TUC >>" class="btn btn-success btn-sm" />
+
+        </div>
+        <div>
+            <input style="width: 500px;margin-top: 10px" onclick="location.href='/createCuaHang/Step=3'" id="step2" type="submit" value="TIEP TUC >>" class="btn btn-success btn-sm" />
+
+        </div>
+    </div>
+
+</center>
+<script th:src="@{/webjars/jquery/1.9.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+    <script th:src="@{/js/createStore.js}"></script>
+<script>
+    $(function() {
+        $("#FileUpload").on("change", function(){
+            var files = !!this.files ? this.files : [];
+            if (!files.length || !window.FileReader) return; // Check if File is selected, or no FileReader support
+            if (/^image/.test( files[0].type)){ //  Allow only image upload
+                var ReaderObj = new FileReader(); // Create instance of the FileReader
+                ReaderObj.readAsDataURL(files[0]); // read the file uploaded
+                ReaderObj.onloadend = function(){ // set uploaded image data as background of div
+                    $("#PreviewPicture").css("background-image", "url("+this.result+")");
+                }
+            }else{
+                alert("Upload an image");
+            }
+        });
+    });
+</script>
+</body>
+</html>

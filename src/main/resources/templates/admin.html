@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"/>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <td>title</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td>ngayKhaiGiang</td>
+        <td><input type="text"  id="date"/></td>
+    </tr>
+    <tr>
+        <td>thoiGian</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td>thoiLuong</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td>hocPhi</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td>diaDiem</td>
+        <td><input type="text"/></td>
+    </tr>
+    <tr>
+        <td>image</td>
+        <td><input type="file" /></td>
+    </tr>
+</table>
+<script th:src="@{/webjars/jquery/1.9.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+
+
+<script th:src="@{webjars/bootstrap-datepicker/1.0.1/js/bootstrap-datepicker.js}" ></script>
+<script th:src="@{webjars/bootstrap-datepicker/1.0.1/css/datepicker.css}" ></script>
+
+<script>
+    $( function() {
+        $( "#date").datepicker();
+    });
+</script>
+</body>
+</html>

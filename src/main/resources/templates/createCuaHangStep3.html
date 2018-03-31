@@ -1,0 +1,64 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+
+    <!--<link th:href="@{webjars/bootstrap/3.3.6/css/bootstrap.min.css}" rel="stylesheet" id="bootstrap-css"/>-->
+    <!--<script th:src="@{webjars/jquery/1.9.1/jquery.min.js}"></script>-->
+    <!--<script th:src="@{webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>-->
+
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.3.6/css/bootstrap.min.css}"/>
+</head>
+<style>
+    #map{
+        width: 500px;
+        height: 400px;
+    }
+</style>
+<body>
+
+<div  style="height: 50px;background-color: #2ecc71;width: 100%">
+
+</div>
+
+<center>
+
+    <h1> create store</h1>
+    <div>
+
+        <div id="map"></div>
+        <div>
+            <input id="dinhvi" th:value="OK" type="submit" style="width: 50px;margin-top: 10px"  class="btn btn-success btn-sm" />
+
+        </div>
+        <div>
+            <input style="width: 500px;margin-top: 10px" onclick="location.href='/createCuaHang/Step=3'" id="step3" type="submit" value="TIEP TUC >>" class="btn btn-success btn-sm" />
+
+        </div>
+
+    </div>
+
+</center>>
+<!--<script th:src="@{/js/gmap.js}"></script>-->
+<script th:src="@{/webjars/jquery/1.9.1/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.3.6/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/createStore.js}"></script>
+<script>
+        var mapp;
+        var mapDev = document.getElementById('map')
+        var myLatLng = {lat: -34.397, lng: 150.644};
+        function initMap() {
+            mapp = new google.maps.Map(mapDev, {
+                center: myLatLng,
+                zoom: 1
+            });
+        }
+</script>
+<script th:src="@{/js/gmap.js}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrfAHt5A8lSE5z3Osql6Zw1EZheyfx55A&amp;callback=initMap"
+        ></script>
+
+</body>
+</html>
